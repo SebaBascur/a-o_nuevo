@@ -35,7 +35,6 @@ body, html {
     z-index: 10;
     text-align: center; /* Asegura que el texto esté centrado si hay un salto de línea */
 }
-
 h1{
     font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
