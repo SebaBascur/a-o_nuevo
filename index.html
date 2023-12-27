@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banner</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="/assets/Fondo tecnológico en 4K.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+   <div>
+       
+</div>
+<div id="clock" class="clock"></div>
+
+
+<div class="logo-container">
+    <img src="https://sebabascur.github.io/img/sin-tiitulo-3_mesa-de-trabajo-1blanco-mP4Xr0XB96SGeOD8.png" alt="Logo">
+</div>
+
+<h1 class="texto" style="color: white; font-size: larger; text-align: center; padding: 160px;">
+    Queda poco para recibir el 2024.
+</h1>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.min.js"></script>
+    <script>
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+
+        function updateClock() {
+            var endtime = '2024-01-01T00:00:00Z';
+            var t = getTimeRemaining(endtime);
+            var timeString = ('0' + t.days).slice(-3) + " días " +
+                             ('0' + t.hours).slice(-2) + " horas " +
+                             ('0' + t.minutes).slice(-2) + " minutos " +
+                             ('0' + t.seconds).slice(-2) + " segundos";
+            document.getElementById('clock').textContent = timeString;
+
+            if (t.total <= 0) {
+                clearInterval(timeinterval);
+                launchConfetti();
+                document.getElementById('clock').textContent = "¡Feliz Año Nuevo!";
+            }
+        }
+
+        function launchConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        });
+    </script>
+
+
+
+
+</body>
+</html>
